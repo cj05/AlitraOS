@@ -1,3 +1,4 @@
+term.clear()
 print("### Welcome to Alitra OS Installer ###")
 if not http then
   print("Disk-Based Installation is not supported")
@@ -5,9 +6,11 @@ if not http then
 end
 exit = 0
 repeat
+  term.clear()
+  print("### Welcome to Alitra OS Installer ###")
   print("Installer Options: 1.INSTALL 2.REMOVE 3.EXIT")
   output = read()
-  if(output == "3")then
+  if output == "3" then
     exit = 1
   end
 until(exit == 1)
