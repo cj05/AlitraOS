@@ -1,3 +1,27 @@
+local function get( sUrl )
+    write( "Attempting to fetch " .. sUrl .. "... " )
+    local ok, err = http.checkURL( sUrl )
+    if not ok then
+        print( "Failed." )
+        if err then
+            print("Error Code: " err )
+        end
+        return nil
+    end
+    local response = http.get( sUrl , nil , true )
+    if not response then
+        print( "Failed. No response from Host" )
+        return nil
+    end
+    print( "Success." )
+    local sResponse = response.readAll()
+    response.close()
+    return sResponse
+end
+
+
+
+
 term.clear()
 term.setCursorPos(1,1)
 print("### Welcome to Alitra OS Installer ###")
@@ -18,7 +42,8 @@ repeat
       --format the entire computer
       print("Feature WIP")
     end
-    shell.run("wget")
+    data = get("https://raw.githubusercontent.com/cj05/AlitraOS/main/metadata.json")
+    print(data)
   end
   if output == "2" then
     print("Feature WIP")
