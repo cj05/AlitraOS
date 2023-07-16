@@ -1,1 +1,23 @@
-print("Booting Kernel......")
+local function biosloop()
+    term.clear()
+    term.setCursorPos(1,1)
+    print("Welcome To BIOS")
+    print("Running SYS SCAN")
+    settings.set("shell.disk_startup",false)
+    settings.save()
+    os.pullEvent = os.pullEventRaw
+    print("SecureBoot: Ok")
+    write("Network: ")
+    if http.checkURL("https://github.com/cj05/AlitraOS/") then print("Ok") online = true else print("Err") end
+    print("Kernel : WIP")
+    write("Booting")
+    term.clear()
+    term.setCursorPos(1,1)
+    shell.run("OS")
+    print("OS has shutted down")
+    read()
+end
+
+while 1 do pcall(biosloop) end
+
+--Run CheckSum Program
