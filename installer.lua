@@ -4,7 +4,7 @@ local function get( sUrl )
     if not ok then
         print( "Failed." )
         if err then
-            print("Error Code: " err )
+            print("Error Code: " .. err )
         end
         return nil
     end
