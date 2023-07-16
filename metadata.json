@@ -1,7 +1,6 @@
 {
-  {
+  "startup":{
   "Url":"https://raw.githubusercontent.com/cj05/AlitraOS/main/computer/startup",
-  "Directory":"startup",
-  "Checksum":"0"
+  "Checksum":0
   }
 }
