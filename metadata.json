@@ -1,8 +1,8 @@
 {
   "startup":{"Checksum":0},
   "OS":{"Checksum":0},
-  "api/window.lua":{"Checksum":0}
-  "api/widget/label.lua":{"Checksum":0}
-  "api/widget/frame.lua":{"Checksum":0}
+  "api/window.lua":{"Checksum":0},
+  "api/widget/label.lua":{"Checksum":0},
+  "api/widget/frame.lua":{"Checksum":0},
   "api/widget/button.lua":{"Checksum":0}
 }
