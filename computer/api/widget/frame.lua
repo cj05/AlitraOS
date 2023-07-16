@@ -43,8 +43,9 @@ function Object:setBackgroundColor(color)
 end
 function Object:draw(data,old,cx,cy)
     term.setCursorPos(1,10)
-    pretty.pretty_print(old)
+    --
     if old then
+        --pretty.pretty_print(old.pos[1].." "..old.pos[2].." "..old.pos[1]+cx.." "..old.pos[2]+cy)
         --erasal
         term.setCursorPos(old.pos[1]+cx,old.pos[2]+cy)
         for i = 1,old.size[2] do
@@ -87,22 +88,25 @@ end
 function Object:updateFrame(cx,cy)
     
     if self.update then 
-        self:draw(self.data,self.data,cx,cy) 
+        --term.setBackgroundColor(self.data.bg)
+        self:draw(self.data,self.OldF,cx,cy) 
+        self.OldF = self.OldF or {}
         self.update=false 
         for i,v in pairs(self.Object) do v.update = true end
+        copy(self.OldF,self.data)
     end
 
     cx = cx+self.data.pos[1]-1
     cy = cy+self.data.pos[2]-1
-    if not self.Object then self.Object = {} end
+    self.Object = self.Object or {}
     for i,v in pairs(self.Object) do
         --print(v.text)
-        if not self.Old then self.Old = {} end
+        self.Old = self.Old or {}
         if(v.update) then
             v.update = false--update
             term.setBackgroundColor(self.data.bg)
             v:draw(v.data,self.Old[i],cx,cy)
-            if not self.Old[i] then self.Old[i] = {} end
+            self.Old[i] = self.Old[i] or {}
             copy(self.Old[i],v.data)
         end
         if v.updateFrame then v:updateFrame(cx,cy) end

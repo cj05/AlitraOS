@@ -5,19 +5,11 @@ x,y = term.getSize()
 Frame:setPos({2,2})
 Frame:setSize({9,8})
 Frame:setBackgroundColor(colors.green)
-Frame2 = Frame:createFrame()
-Frame2:setPos({2,2})
-Frame2:setSize({7,6})
-Frame2:setBackgroundColor(colors.orange)
-Frame3 = Frame2:createFrame()
-Frame3:setPos({2,2})
-Frame3:setSize({5,4})
-Frame3:setBackgroundColor(colors.pink)
-Button = Frame3:createButton()
-Label = Frame3:createLabel()
+Button = Frame:createButton()
+Label = Frame:createLabel()
 function ButtonHandler(obj,event)
     if(event[1]=="mouse_click")then
-        Frame2:setPos({math.random(30),math.random(3)})
+        Frame:setPos({math.random(10),math.random(3)})
     end
 end
 Button:setText("Hello")
@@ -27,6 +19,9 @@ function EventHandling()
     while 1 do 
         event = {os.pullEvent()}
         Window:eventHandler(event)
+        if(event[1] == "terminate") then
+            return
+        end
     end
 end
 function Main()
