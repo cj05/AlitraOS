@@ -48,7 +48,7 @@ if output == "1" then
   rawMetadata = get("https://raw.githubusercontent.com/cj05/AlitraOS/main/metadata.json")
   Metadata = textutils.unserializeJSON(rawMetadata)
   for targetDir,FData in pairs(Metadata) do
-    RawFileData = get(FData.Url)
+    RawFileData = get("https://raw.githubusercontent.com/cj05/AlitraOS/main/computer/"..targetDir)
     CheckSum = FData.Checksum
     --checksum here
     file = fs.open(targetDir,"w")
