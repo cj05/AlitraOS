@@ -1,2 +1,2 @@
 # AlitraOS
-# CC secure(ish) os
+# CC os
